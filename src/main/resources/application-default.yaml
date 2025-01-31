@@ -1,4 +1,5 @@
 queue:
+  # Name to be used in ActiveMQ queue when using ATS
   engineRequestQueue: xml-engine-queue
 transform:
   core:
