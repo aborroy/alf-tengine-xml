@@ -80,6 +80,11 @@ public class XmlMetadataExtractor extends AbstractMetadataExtractorEmbedder {
         putRawValue("securityClassification", getProperty(xmlDocument, "securityClassification"), extractedMetadata);
         putRawValue("text", getProperty(xmlDocument, "text"), extractedMetadata);
 
+        // Extract doc id attribute
+        Node docNode = xmlDocument.getDocumentElement();
+        String docId = docNode.getAttributes().getNamedItem("id").getNodeValue();
+        putRawValue("doc.id", docId, extractedMetadata);
+
         return extractedMetadata;
     }
 
