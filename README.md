@@ -119,6 +119,8 @@ services:
     image: alfresco-tengine-xml:latest
     environment:
       ACTIVEMQ_URL: "nio://activemq:61616"
+      FILE_STORE_URL: >-
+        http://shared-file-store:8099/alfresco/api/-default-/private/sfs/versions/1/file
 ```
 
 ✅ **Key Configuration Updates:**
