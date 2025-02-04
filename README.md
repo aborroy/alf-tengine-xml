@@ -127,7 +127,7 @@ services:
 - Register the XML transformer with **transform-router**.
     - URL: `http://transform-xml:8090/` (default).
     - Queue Name: `xml-engine-queue` (defined in `application-default.yaml`).
-- Define the **transform-xml** service and link it to ActiveMQ.
+- Define the **transform-xml** service and link it to ActiveMQ and Shared File Store services.
 
 📌 *Ensure you have built the Docker image (`alfresco-tengine-xml`) before running Docker Compose.*
 
