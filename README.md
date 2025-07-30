@@ -9,9 +9,7 @@ This project provides a *sample* Metadata Extract Transform Engine for XML, desi
 - Provides a test HTML interface for local validation.
 - Supports Docker deployment for easy integration.
 
----
-
-## 🛠 Local Testing
+## Local Testing
 
 ### Requirements
 
@@ -46,11 +44,9 @@ After starting the service, open the test application at [http://localhost:8090]
 
 Click the **Transform** button to process the XML file. The extracted metadata will be returned as a JSON response.
 
-📌 *Metadata mapping is defined in* [`XmlMetadataExtractor_metadata_extract.properties`](src/main/resources/XmlMetadataExtractor_metadata_extract.properties).
+*Metadata mapping is defined in* [`XmlMetadataExtractor_metadata_extract.properties`](src/main/resources/XmlMetadataExtractor_metadata_extract.properties).
 
----
-
-## 🐳 Building the Docker Image
+## Building the Docker Image
 
 ### Requirements
 
@@ -66,9 +62,7 @@ docker build . -t alfresco-tengine-xml
 
 This will create a Docker image named `alfresco-tengine-xml:latest` in your local Docker repository.
 
----
-
-## 🚀 Deploying with Alfresco Community 23.x
+## Deploying with Alfresco Community 23.x
 
 Ensure your `compose.yaml` file includes the following configuration:
 
@@ -87,15 +81,13 @@ services:
     image: alfresco-tengine-xml:latest
 ```
 
-✅ **Key Configuration Updates:**
+**Key Configuration Updates:**
 - Add `localTransform.xml.url` to the **Alfresco** service (`http://transform-xml:8090/` by default).
 - Define the **transform-xml** service using the custom-built image.
 
-📌 *Ensure you have built the Docker image (`alfresco-tengine-xml`) before running Docker Compose.*
+*Ensure you have built the Docker image (`alfresco-tengine-xml`) before running Docker Compose.*
 
----
-
-## 🏢 Deploying with Alfresco Enterprise 23.x
+## Deploying with Alfresco Enterprise 23.x
 
 Ensure your `compose.yaml` file includes the following configuration:
 
@@ -123,19 +115,17 @@ services:
         http://shared-file-store:8099/alfresco/api/-default-/private/sfs/versions/1/file
 ```
 
-✅ **Key Configuration Updates:**
+**Key Configuration Updates:**
 - Register the XML transformer with **transform-router**.
     - URL: `http://transform-xml:8090/` (default).
     - Queue Name: `xml-engine-queue` (defined in `application-default.yaml`).
 - Define the **transform-xml** service and link it to ActiveMQ and Shared File Store services.
 
-📌 *Ensure you have built the Docker image (`alfresco-tengine-xml`) before running Docker Compose.*
+*Ensure you have built the Docker image (`alfresco-tengine-xml`) before running Docker Compose.*
 
----
+## Defining an XML Folder Rules in Alfresco Share
 
-## 📂 Defining an XML Folder Rule in Alfresco Share
-
-To automatically extract metadata from XML files uploaded to a specific folder, set up a folder rule in Alfresco Share:
+To automatically extract metadata from XML files uploaded to a specific folder or updated, set up a pair of folder rules in Alfresco Share:
 
 1. Open [http://localhost:8080/share/](http://localhost:8080/share/) in your browser.
 2. Navigate to the desired folder.
@@ -145,12 +135,15 @@ To automatically extract metadata from XML files uploaded to a specific folder, 
     - **If all criteria are met:** Mimetype is `XML`.
     - **Perform Action:** Extract common metadata fields.
 5. Save the rule.
+6. Create a second rule with the following settings:
+    - **When:** Items are updated.
+    - **If all criteria are met:** Mimetype is `XML`.
+    - **Perform Action:** Extract common metadata fields.
+7. Save the rule.
 
-From now on, any XML file uploaded to the folder will be analyzed, and the extracted metadata will be mapped according to [`XmlMetadataExtractor_metadata_extract.properties`](src/main/resources/XmlMetadataExtractor_metadata_extract.properties).
+From now on, any XML file uploaded to the folder and any XML file updated will be analyzed, and the extracted metadata will be mapped according to [`XmlMetadataExtractor_metadata_extract.properties`](src/main/resources/XmlMetadataExtractor_metadata_extract.properties).
 
----
-
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! To contribute:
 1. Fork this repository.
@@ -160,10 +153,8 @@ Contributions are welcome! To contribute:
 
 For major changes, please open an issue first to discuss your proposal.
 
----
-
-## 📞 Support
+## Support
 
 For issues and feature requests, please open a GitHub issue in this repository.
 
-Happy coding! 🚀
+Happy coding!
