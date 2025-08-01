@@ -127,7 +127,7 @@ services:
 
 Alfresco Repository automatically invokes the **XmlMetadataExtractor** every time an XML node is **created** or **updated**. As a result, **no folder rules or additional configuration are required** in Alfresco Share:
 
-* The extractor is triggered globally—regardless of the site, library, or folder in which the XML file resides
+* The extractor is triggered globally, regardless of the site, library, or folder in which the XML file resides
 * Metadata is mapped according to the definitions in [`XmlMetadataExtractor_metadata_extract.properties`](src/main/resources/XmlMetadataExtractor_metadata_extract.properties)
 
 Simply deploy the Transform Engine and upload or modify XML files as usual; the Repository takes care of extracting the common metadata fields for you.
