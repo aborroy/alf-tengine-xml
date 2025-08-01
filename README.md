@@ -123,25 +123,14 @@ services:
 
 *Ensure you have built the Docker image (`alfresco-tengine-xml`) before running Docker Compose.*
 
-## Defining an XML Folder Rules in Alfresco Share
+## Automatic Metadata Extraction
 
-To automatically extract metadata from XML files uploaded to a specific folder or updated, set up a pair of folder rules in Alfresco Share:
+Alfresco Repository automatically invokes the **XmlMetadataExtractor** every time an XML node is **created** or **updated**. As a result, **no folder rules or additional configuration are required** in Alfresco Share:
 
-1. Open [http://localhost:8080/share/](http://localhost:8080/share/) in your browser.
-2. Navigate to the desired folder.
-3. Click **Manage Rules**.
-4. Create a new rule with the following settings:
-    - **When:** Items are created or enter this folder.
-    - **If all criteria are met:** Mimetype is `XML`.
-    - **Perform Action:** Extract common metadata fields.
-5. Save the rule.
-6. Create a second rule with the following settings:
-    - **When:** Items are updated.
-    - **If all criteria are met:** Mimetype is `XML`.
-    - **Perform Action:** Extract common metadata fields.
-7. Save the rule.
+* The extractor is triggered globally—regardless of the site, library, or folder in which the XML file resides
+* Metadata is mapped according to the definitions in [`XmlMetadataExtractor_metadata_extract.properties`](src/main/resources/XmlMetadataExtractor_metadata_extract.properties)
 
-From now on, any XML file uploaded to the folder and any XML file updated will be analyzed, and the extracted metadata will be mapped according to [`XmlMetadataExtractor_metadata_extract.properties`](src/main/resources/XmlMetadataExtractor_metadata_extract.properties).
+Simply deploy the Transform Engine and upload or modify XML files as usual; the Repository takes care of extracting the common metadata fields for you.
 
 ## Contributing
 
