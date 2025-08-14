@@ -5,7 +5,7 @@ This project provides a *sample* Metadata Extract Transform Engine for XML, desi
 ## Features
 
 - Extracts metadata from XML files and maps it to Alfresco properties.
-- Compatible with Alfresco Community and Enterprise versions (23.x).
+- Compatible with Alfresco Community and Enterprise versions.
 - Provides a test HTML interface for local validation.
 - Supports Docker deployment for easy integration.
 
@@ -13,8 +13,8 @@ This project provides a *sample* Metadata Extract Transform Engine for XML, desi
 
 | Alfresco Version | Branch | Latest Release | Transformer Version | Java Version |
 |------------------|---------|----------------|-------------------|--------------|
-| 7.x - 23.x | [`alfresco-legacy`](https://github.com/aborroy/alf-tengine-xml/tree/alfresco-legacy) | [v1.0.0-legacy](https://github.com/aborroy/alf-tengine-xml/releases/tag/v1.0.0-legacy) | 3.1.0 | Java 11+ |
-| 25.x+ | [`main`](https://github.com/aborroy/alf-tengine-xml) | [v2.0.0](https://github.com/aborroy/alf-tengine-xml/releases/tag/v2.0.0) | 5.2 | Java 17+ |
+| 7.x - 23.x, 25.1.x | [`alfresco-legacy`](https://github.com/aborroy/alf-tengine-xml/tree/alfresco-legacy) | [v1.0.0-legacy](https://github.com/aborroy/alf-tengine-xml/releases/tag/v1.0.0-legacy) | 3.1.0 | Java 11+ |
+| 25.2+ | [`main`](https://github.com/aborroy/alf-tengine-xml) | [v2.0.0](https://github.com/aborroy/alf-tengine-xml/releases/tag/v2.0.0) | 5.2 | Java 17+ |
 
 ## Local Testing
 
@@ -27,7 +27,7 @@ Ensure you have the following dependencies installed:
 
 ## Quick Start
 
-### For Alfresco 25.x and Later (Current)
+### For Alfresco 25.2.x and Later (Current)
 
 ```bash
 git clone https://github.com/aborroy/alf-tengine-xml.git
@@ -35,7 +35,7 @@ cd alf-tengine-xml
 mvn clean package
 ```
 
-### For Alfresco 7.x - 23.x (Legacy)
+### For Alfresco 7.x - 23.x, 25.1.0 (Legacy)
 
 ```bash
 git clone -b alfresco-legacy https://github.com/aborroy/alf-tengine-xml.git
@@ -92,7 +92,7 @@ services:
         -DlocalTransform.xml.url=http://transform-xml:8090/
 
   transform-core-aio:
-    image: alfresco/alfresco-transform-core-aio:5.1.6
+    image: alfresco/alfresco-transform-core-aio:5.2.0
 
   transform-xml:
     image: alfresco-tengine-xml:latest
@@ -118,7 +118,7 @@ services:
         -Dsfs.url=http://shared-file-store:8099/
 
   transform-router:
-    image: quay.io/alfresco/alfresco-transform-router:4.1.4
+    image: quay.io/alfresco/alfresco-transform-router:4.2.0
     environment:
       CORE_AIO_URL: "http://transform-core-aio:8090"
       TRANSFORMER_URL_XML: "http://transform-xml:8090"
@@ -151,7 +151,7 @@ Simply deploy the Transform Engine and upload or modify XML files as usual; the 
 
 ## Migration Guide
 
-### Upgrading from Legacy (7.x-23.x) to Modern (25.x+)
+### Upgrading from Legacy (7.x-23.x, 25.1.x) to Modern (25.2+)
 
 * Check Dependencies: Ensure you're using Java 17+ and updated Alfresco version
 * Update Configuration: Review configuration changes for transformer 5.2
@@ -168,8 +168,8 @@ Simply deploy the Transform Engine and upload or modify XML files as usual; the 
 
 1. Fork the repository
 2. Create a feature branch from the appropriate base branch:
-   - For Alfresco 25.x+ features: branch from `main`
-   - For Alfresco 7.x-23.x fixes: branch from `alfresco-legacy`
+   - For Alfresco 25.2.x+ features: branch from `main`
+   - For Alfresco 7.x-23.x, 25.1.x fixes: branch from `alfresco-legacy`
 3. Make your changes
 4. Submit a pull request to the appropriate branch
 
@@ -181,7 +181,7 @@ For issues and feature requests, please open a GitHub issue in this repository.
 
 ## Changelog
 
-### v2.0.0 - Alfresco 25.x+
+### v2.0.0 - Alfresco 25.2.x+
 
 * BREAKING: Updated to transformer 5.2
 * BREAKING: Java 17 minimum requirement
@@ -189,7 +189,7 @@ For issues and feature requests, please open a GitHub issue in this repository.
 * Improved error handling and logging
 * Performance optimizations
 
-### v1.0.0-legacy - Alfresco 7.x-23.x
+### v1.0.0-legacy - Alfresco 7.x-23.x, 25.1.x
 
 * Stable release for legacy Alfresco versions
 * Transformer 3.1.0 compatibility
