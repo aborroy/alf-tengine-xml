@@ -9,6 +9,13 @@ This project provides a *sample* Metadata Extract Transform Engine for XML, desi
 - Provides a test HTML interface for local validation.
 - Supports Docker deployment for easy integration.
 
+## Compatibility Matrix
+
+| Alfresco Version | Branch | Latest Release | Transformer Version | Java Version |
+|------------------|---------|----------------|-------------------|--------------|
+| 7.x - 23.x | [`alfresco-legacy`](https://github.com/aborroy/alf-tengine-xml/tree/alfresco-legacy) | [v1.0.0-legacy](https://github.com/aborroy/alf-tengine-xml/releases/tag/v1.0.0-legacy) | 3.1.0 | Java 11+ |
+| 25.x+ | [`main`](https://github.com/aborroy/alf-tengine-xml) | [v2.0.0](https://github.com/aborroy/alf-tengine-xml/releases/tag/v2.0.0) | 5.2 | Java 17+ |
+
 ## Local Testing
 
 ### Requirements
@@ -18,13 +25,23 @@ Ensure you have the following dependencies installed:
 - **Java** 17+
 - **Maven** 3.5+
 
-### Building the Application
+## Quick Start
 
-To build the JAR package, run:
+### For Alfresco 25.x and Later (Current)
 
 ```bash
+git clone https://github.com/aborroy/alf-tengine-xml.git
+cd alf-tengine-xml
 mvn clean package
 ```
+
+### For Alfresco 7.x - 23.x (Legacy)
+
+```bash
+git clone -b alfresco-legacy https://github.com/aborroy/alf-tengine-xml.git
+cd alf-tengine-xml
+mvn clean package
+``
 
 ### Running the Application
 
@@ -132,13 +149,29 @@ Alfresco Repository automatically invokes the **XmlMetadataExtractor** every tim
 
 Simply deploy the Transform Engine and upload or modify XML files as usual; the Repository takes care of extracting the common metadata fields for you.
 
+## Migration Guide
+
+### Upgrading from Legacy (7.x-23.x) to Modern (25.x+)
+
+* Check Dependencies: Ensure you're using Java 17+ and updated Alfresco version
+* Update Configuration: Review configuration changes for transformer 5.2
+* Test Thoroughly: The transformer API has breaking changes between versions
+
+### Key Changes in v2.0.0
+
+* Updated to transformer 5.2
+* Java 17 minimum requirement
+* Spring 6.x compatibility
+* API changes for feature improvement
+
 ## Contributing
 
-Contributions are welcome! To contribute:
-1. Fork this repository.
-2. Create a new branch (`feature-branch-name`).
-3. Commit your changes.
-4. Submit a pull request.
+1. Fork the repository
+2. Create a feature branch from the appropriate base branch:
+   - For Alfresco 25.x+ features: branch from `main`
+   - For Alfresco 7.x-23.x fixes: branch from `alfresco-legacy`
+3. Make your changes
+4. Submit a pull request to the appropriate branch
 
 For major changes, please open an issue first to discuss your proposal.
 
@@ -146,4 +179,18 @@ For major changes, please open an issue first to discuss your proposal.
 
 For issues and feature requests, please open a GitHub issue in this repository.
 
-Happy coding!
+## Changelog
+
+### v2.0.0 - Alfresco 25.x+
+
+* BREAKING: Updated to transformer 5.2
+* BREAKING: Java 17 minimum requirement
+* Updated Spring dependencies to 6.x
+* Improved error handling and logging
+* Performance optimizations
+
+### v1.0.0-legacy - Alfresco 7.x-23.x
+
+* Stable release for legacy Alfresco versions
+* Transformer 3.1.0 compatibility
+* Java 11+ support
