@@ -41,7 +41,7 @@ mvn clean package
 git clone -b alfresco-legacy https://github.com/aborroy/alf-tengine-xml.git
 cd alf-tengine-xml
 mvn clean package
-```
+``
 
 ### Running the Application
 
@@ -74,7 +74,7 @@ Click the **Transform** button to process the XML file. The extracted metadata w
 From the project root directory, build the Docker image with:
 
 ```bash
-docker build . -t alfresco-tengine-xml
+docker build --load -t alfresco-tengine-xml .
 ```
 
 This will create a Docker image named `alfresco-tengine-xml:latest` in your local Docker repository.
