@@ -15,12 +15,12 @@
   <parent>
     <groupId>org.alfresco</groupId>
     <artifactId>alfresco-transform-core</artifactId>
-    <version>5.1.6</version> <!-- Change also this number when upgrading "alfresco.transformer.version" in properties -->
+    <version>5.2.0</version> <!-- Change also this number when upgrading "alfresco.transformer.version" in properties -->
   </parent>
 
   <!-- Define dependency versions for Alfresco Transform Base TEngine-->
   <properties>
-    <alfresco.transformer.version>5.1.6</alfresco.transformer.version>
+    <alfresco.transformer.version>5.2.0</alfresco.transformer.version>
   </properties>
 
   <dependencies>
